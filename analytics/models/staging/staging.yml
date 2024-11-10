@@ -20,6 +20,12 @@ models:
         description: The fare amount
       - name: total_amount
         description: The total amount
+      - name: duration
+        description: The trip duration
+        tests:
+          - not_null
+      - name: payment_type
+        description: The payment type
   - name: stg_zones
     description: The taxi zones, with enriched records and additional flags
     columns:
@@ -38,5 +44,12 @@ models:
                 - Queens
                 - Staten Island
                 - EWR
-      - name: zone
+      - name: zone_name
         description: The zone
+      - name: is_airport
+        description: Whether the zone is an airport
+        tests:
+          - accepted_values:
+              values:
+                - true
+                - false
